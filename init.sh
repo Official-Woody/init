@@ -17,6 +17,7 @@ sudo apt install ntfs-3g -y
 sudo apt install cifs-utils -y
 sudo apt install openvpn-systemd-resolved -y
 sudo apt install cryptsetup -y
+sudo apt install keepass2 -y
 
 printf "\n\nDone! Please restart\n"
 read -ep "restart ? y/n: " x
