@@ -1,6 +1,7 @@
 #!/bin/bash
 
-user="$(whoami)"
+
+printf "\n"; read -ep "Current User: " user
 
 if sudo mkdir /mnt/vlt ; then
     printf "\n[OK] changing permissions...\n"
@@ -19,8 +20,12 @@ sudo apt install openvpn-systemd-resolved -y
 sudo apt install cryptsetup -y
 sudo apt install keepass2 -y
 
-printf "\n\nDone! Please restart\n"
-read -ep "restart ? y/n: " x
-if [ "$x" == 'y' ]; then
-    sudo reboot
-fi
+cp bashrc /home/$user/.bashrc
+chown $user:$user  /home/$user/.bashrc
+printf "\n[OK]replaced '.bashrc'"
+
+#mkdir  /home/$user/Desktop/vlt
+ln -s /mnt/vlt/  /home/$user/Desktop/
+chown $user:$user  /home/$user/Desktop/vlt
+chmod 777  /home/$user/Desktop/vlt
+printf "\n[OK shortcut to vlt]"
